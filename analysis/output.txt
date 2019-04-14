@@ -1,0 +1,71 @@
+2019-04-14 07:55:34,337 INFO sqlalchemy.engine.base.Engine SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2019-04-14 07:55:34,338 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,339 INFO sqlalchemy.engine.base.Engine SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2019-04-14 07:55:34,339 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,341 INFO sqlalchemy.engine.base.Engine PRAGMA table_info("state")
+2019-04-14 07:55:34,341 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,342 INFO sqlalchemy.engine.base.Engine PRAGMA table_info("tornado")
+2019-04-14 07:55:34,343 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,343 INFO sqlalchemy.engine.base.Engine PRAGMA table_info("industry")
+2019-04-14 07:55:34,344 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,345 INFO sqlalchemy.engine.base.Engine PRAGMA table_info("gdp")
+2019-04-14 07:55:34,346 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,348 INFO sqlalchemy.engine.base.Engine
+CREATE TABLE state (
+        "StateID" INTEGER NOT NULL,
+        "StateName" CHAR(50),
+        PRIMARY KEY ("StateID")
+)
+
+
+2019-04-14 07:55:34,360 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,381 INFO sqlalchemy.engine.base.Engine COMMIT
+2019-04-14 07:55:34,382 INFO sqlalchemy.engine.base.Engine
+CREATE TABLE tornado (
+        "TornadoID" INTEGER NOT NULL,
+        "Yr" INTEGER,
+        "Mo" INTEGER,
+        "Dy" INTEGER,
+        "Magnitude" INTEGER,
+        "Latitude" FLOAT,
+        "Longitude" FLOAT,
+        "StateID" INTEGER,
+        PRIMARY KEY ("TornadoID")
+)
+
+
+2019-04-14 07:55:34,391 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,405 INFO sqlalchemy.engine.base.Engine COMMIT
+2019-04-14 07:55:34,407 INFO sqlalchemy.engine.base.Engine
+CREATE TABLE industry (
+        "IndustryID" INTEGER NOT NULL,
+        "IndustryName" CHAR(50),
+        PRIMARY KEY ("IndustryID")
+)
+
+
+2019-04-14 07:55:34,409 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,424 INFO sqlalchemy.engine.base.Engine COMMIT
+2019-04-14 07:55:34,425 INFO sqlalchemy.engine.base.Engine
+CREATE TABLE gdp (
+        "GdpID" INTEGER NOT NULL,
+        "GDP" FLOAT,
+        "Yr" INTEGER,
+        "StateID" INTEGER,
+        "IndustryID" INTEGER,
+        PRIMARY KEY ("GdpID")
+)
+
+
+2019-04-14 07:55:34,427 INFO sqlalchemy.engine.base.Engine ()
+2019-04-14 07:55:34,442 INFO sqlalchemy.engine.base.Engine COMMIT
+2019-04-14 07:55:34,453 INFO sqlalchemy.engine.base.Engine BEGIN (implicit)
+2019-04-14 07:55:34,454 INFO sqlalchemy.engine.base.Engine INSERT INTO state DEFAULT VALUES
+2019-04-14 07:55:34,454 INFO sqlalchemy.engine.base.Engine ((), ())
+2019-04-14 07:55:34,466 INFO sqlalchemy.engine.base.Engine INSERT INTO tornado DEFAULT VALUES
+2019-04-14 07:55:34,468 INFO sqlalchemy.engine.base.Engine ((), (), (), (), (), (), (), ())
+2019-04-14 07:55:34,470 INFO sqlalchemy.engine.base.Engine INSERT INTO industry DEFAULT VALUES
+2019-04-14 07:55:34,470 INFO sqlalchemy.engine.base.Engine ((), ())
+2019-04-14 07:55:34,472 INFO sqlalchemy.engine.base.Engine INSERT INTO gdp DEFAULT VALUES
+2019-04-14 07:55:34,472 INFO sqlalchemy.engine.base.Engine ((), (), (), (), ())
+2019-04-14 07:55:34,473 INFO sqlalchemy.engine.base.Engine COMMIT

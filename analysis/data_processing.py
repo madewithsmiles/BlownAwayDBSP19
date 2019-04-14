@@ -70,4 +70,5 @@ def get_dataset(debug=False):
     assert len(gdp_df[gdp_df['Yr']==2016].StateID) == len(gdp_df[gdp_df['Yr']==2016].StateID.unique())
 
     # -------------------- Return #
-    return dataset(tornados=data_t, states=states_data, industries=industry_data, gdp=gdp_data)
+    # return dataset(tornados=data_t, states=states_data, industries=industry_data, gdp=gdp_data)
+    return dataset(tornados=data_t, states=st_df, industries=ind_df, gdp=gdp_df)
