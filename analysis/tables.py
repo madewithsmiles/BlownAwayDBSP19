@@ -36,6 +36,7 @@ class Gdp(Base):
     __tablename__ = 'gdp'
 
     GdpID = Column(INTEGER, primary_key=True,nullable=False)
+    GDP = Column(FLOAT, nullable=False)
     Yr = Column(INTEGER, nullable=False)
     StateID = Column(INTEGER, ForeignKey("state.StateID"), nullable=False)
     IndustryID = Column(INTEGER, ForeignKey("industry.IndustryID") ,nullable=False)
