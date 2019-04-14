@@ -1,12 +1,14 @@
 import sqlalchemy as db
 from sqlalchemy.orm import sessionmaker
-from tables import State, Tornado, Industry, Gdp
+from tables import Base, State, Tornado, Industry, Gdp
 from data_processing import get_dataset
 
 dataset = get_dataset()
 metadata = db.MetaData()
 engine = db.create_engine('sqlite:///test.db', echo=True)
 connection = engine.connect()
+Base.metadata.create_all(engine)
+
 Session = sessionmaker(bind=engine)
 
 session = Session()
