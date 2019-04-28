@@ -1,3 +1,4 @@
+import sys
 states = {
         'AK': 'Alaska',
         'AL': 'Alabama',
@@ -61,8 +62,7 @@ states = {
 def populate_gdp_data(gdp_dict, dataset, states_list, years, st_df, first_year_index_in_header, iId=1, debug=False):
     count = len(gdp_dict['GdpID'])
     
-    if count == 0:
-        count = 1
+    count += 1
         
     for state in states_list:
         current_row = dataset[(dataset['GeoName']==state) & (dataset['IndustryId']==iId)].values.tolist()

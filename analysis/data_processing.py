@@ -14,6 +14,9 @@ dataset = namedtuple('dataset', 'tornados, states, industries, gdp')
 def get_dataset(debug=False):
 
     cwd = Path.cwd().parent
+    
+    if not cwd / Path('data/') in [x for x in cwd.iterdir() if x.is_dir()]:
+        cwd /= Path('BlownAwayDBSP19')
 
     data_folder = cwd / Path('data/')
     n1 = 'SAGDP2S__ALL_AREAS_1963_1997.csv'
@@ -31,12 +34,19 @@ def get_dataset(debug=False):
     data_97 = read_csv(sagdp2n)
     data_t = read_csv(tornado)
 
+    # -------------------- Rename column names for tornados (data_t) #
+    data_t.rename(columns={'Year':'Yr',\
+                           'Month':'Mo',\
+                           'Day': 'Dy'}, inplace=True)
+
     # ------------------- State data (states_data, st_df)#
-    states_data = {'StateID':[], 'StateName':[]}
-    
+    states_data = {'StateID':[], 'StatePostalCode':[] ,'StateName':[]}
+    cnt = 1
     for i,j in states.items():
-        states_data['StateID'].append(i)
+        states_data['StateID'].append(cnt)
+        states_data['StatePostalCode'].append(i)
         states_data['StateName'].append(j)
+        cnt += 1
 
     st_df = pd.DataFrame.from_dict(states_data)
 

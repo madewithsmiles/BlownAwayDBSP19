@@ -8,6 +8,7 @@ class State(Base):
     __tablename__ = 'state'
 
     StateID = Column(INTEGER, primary_key=True, nullable=False)
+    StatePostalCode = Column(CHAR(50), nullable=False)
     StateName = Column(CHAR(50), nullable=False)
 
 # -------------------------------- Tornado Info #
