@@ -49,6 +49,15 @@ def get_dataset(debug=False):
         cnt += 1
 
     st_df = pd.DataFrame.from_dict(states_data)
+    # ------------------- Update the foreign key for Tornados
+    data_t = pd.merge(
+        data_t, 
+        st_df[['StateID', 'StatePostalCode']], 
+        on='StatePostalCode', how='inner')\
+        .drop(
+            ['StatePostalCode'], 
+            axis = 1
+            )
 
     # ------------------ Industry Data (industry_data, ind_df) #
 
